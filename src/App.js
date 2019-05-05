@@ -1,39 +1,63 @@
 import React, { useState } from 'react';
 //import ChoiceContainer from './ChoiceContainer'
+import Button from './Button';
 import './App.css';
 
 // function App() {
-class App extends React.Component{
+const App = () => {
+  const [starWarsCount, setStarWarsCount] = useState(20);
+  const [starTrekCount, setStarTrekCount] = useState(40);
 
-  // Declare a new state variable, which we'll call "count"
-  //const [count, setCount] = useState(0);
-  //The Star Wars button is initialized at 20, the Star Trek button is initialized at 40
-  state = {clicked: false, starWarsCount: 20, starTrekCount: 40}
+  const [selectedWars, setSelectedWars] = useState('unselected');
+  const [selectedTrek, setSelectedTrek] = useState('unselected');
 
-  buttonHandler = () => {
-    console.log("Button was clicked");
+
+  const buttonHandler = (title) => {
+    //Change the clicked to be false/true
+    //if(!clicked){
+    //   //set the clicked to be true
+    //   // increment the curent value by one
+    // }else{
+    //   //set the clicked to be false
+    //   // decrement by one
+    // }
+    if(title === 'Star Wars'){
+      setStarWarsCount(starWarsCount + 1);
+    }else{
+      setStarTrekCount(starTrekCount + 1);
+    }
+    //console.log(title);
   }
-  render(){
-    return (
-      <div className="App">
-        <h1>Star Trek or Star Wars</h1>
-        <div>
-          <button onClick={() => this.buttonHandler()}>Star Wars | {this.state.starWarsCount}</button>
-        </div>
-        <div>
-          <button onClick={() => this.buttonHandler()}>Star Trek | {this.state.starTrekCount}</button>
-        </div>
+
+  return (
+    <div className="App">
+      <h1>Star Trek or Star Wars</h1>
+
+      <div>
+        <Button
+          title="Star Wars"
+          count={starWarsCount}
+          selected={selectedWars}
+          buttonHandler={buttonHandler}/>
       </div>
-    );
-  }
+
+      <div>
+        <Button
+          title="Star Trek"
+          count={starTrekCount}
+          selected={selectedTrek}
+          buttonHandler={buttonHandler}/>
+      </div>
+
+    </div>
+  );
 }
 
 export default App;
 
-      //
-      // <button>button one </button>
-      // <button>button two</button>
-      // <p>You clicked {count} times</p>
-      // <button onClick={() => setCount(count + 1)}>
-      //   Click me
-      // </button>
+// Declare a new state variable, which we'll call "count"
+//const [count, setCount] = useState(0);
+//<button onClick={() => setStarTrekCount(starTrekCount + 1)}>Star Trek | {starTrekCount}</button>
+      //<div>
+      //  <button onClick={() => this.buttonHandler()}>Star Trek | {this.state.starTrekCount}</button>
+      //</div>
