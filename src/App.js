@@ -10,18 +10,8 @@ const App = () => {
   const [selectedWars, setSelectedWars] = useState('unselected');
   const [selectedTrek, setSelectedTrek] = useState('unselected');
 
-  const trekOrWars = (title) => {
-    if(title === 'Star Wars'){
-      setSelectedWars('selected');
-      setStarWarsCount(starWarsCount + 1);
-    }else{
-      setStarTrekCount(starTrekCount + 1);
-    }
-  }
-//It is not possible to select both choices: when clicking a button,
-//if the other one is selected, it becomes unselected.
 
-  const buttonHandler = (title) => {
+  const trekOrWars = (title) => {
     if(title === 'Star Wars'){
       if(selectedWars === 'unselected'){
         setStarWarsCount(starWarsCount + 1);
@@ -39,15 +29,26 @@ const App = () => {
         setSelectedTrek('unselected')
       }
     }
-    //if(!clicked){
-    //   //set the clicked to be true
-    //   // increment the curent value by one
-    // }else{
-    //   //set the clicked to be false
-    //   // decrement by one
-    // }
-
-    //console.log(title);
+  }
+//It is not possible to select both choices: when clicking a button,
+//if the other one is selected, it becomes unselected.
+  const buttonHandler = (title) => {
+    if(selectedWars === 'selected' && title === 'Star Trek'){
+      console.log("Star war was already selected now you clicked star trek");
+      setSelectedWars('unselected');
+      setStarWarsCount(starWarsCount - 1);
+      setSelectedTrek('selected');
+      setStarTrekCount(starTrekCount + 1);
+    }else if(selectedTrek === 'selected' && title === 'Star Wars'){
+      console.log("Star Trek was selected and now you clicked Star Wars");
+      setSelectedTrek('unselected');
+      setStarTrekCount(starTrekCount - 1);
+      setSelectedWars('selected');
+      setStarWarsCount(starWarsCount + 1);
+    }else{
+      console.log(title ," is selected");
+      trekOrWars(title);
+    }
   }
 
   return (
@@ -75,10 +76,3 @@ const App = () => {
 }
 
 export default App;
-
-// Declare a new state variable, which we'll call "count"
-//const [count, setCount] = useState(0);
-//<button onClick={() => setStarTrekCount(starTrekCount + 1)}>Star Trek | {starTrekCount}</button>
-      //<div>
-      //  <button onClick={() => this.buttonHandler()}>Star Trek | {this.state.starTrekCount}</button>
-      //</div>
