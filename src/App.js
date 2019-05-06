@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import Button from './Button';
 import './App.css';
 
-// function App() {
 const App = () => {
   const [starWarsCount, setStarWarsCount] = useState(20);
   const [starTrekCount, setStarTrekCount] = useState(40);
@@ -11,9 +10,35 @@ const App = () => {
   const [selectedWars, setSelectedWars] = useState('unselected');
   const [selectedTrek, setSelectedTrek] = useState('unselected');
 
+  const trekOrWars = (title) => {
+    if(title === 'Star Wars'){
+      setSelectedWars('selected');
+      setStarWarsCount(starWarsCount + 1);
+    }else{
+      setStarTrekCount(starTrekCount + 1);
+    }
+  }
+//It is not possible to select both choices: when clicking a button,
+//if the other one is selected, it becomes unselected.
 
   const buttonHandler = (title) => {
-    //Change the clicked to be false/true
+    if(title === 'Star Wars'){
+      if(selectedWars === 'unselected'){
+        setStarWarsCount(starWarsCount + 1);
+        setSelectedWars('selected');
+      }else{
+        setStarWarsCount(starWarsCount - 1);
+        setSelectedWars('unselected');
+      }
+    }else{
+      if(selectedTrek === 'unselected'){
+        setStarTrekCount(starTrekCount + 1);
+        setSelectedTrek('selected')
+      }else{
+        setStarTrekCount(starTrekCount - 1);
+        setSelectedTrek('unselected')
+      }
+    }
     //if(!clicked){
     //   //set the clicked to be true
     //   // increment the curent value by one
@@ -21,11 +46,7 @@ const App = () => {
     //   //set the clicked to be false
     //   // decrement by one
     // }
-    if(title === 'Star Wars'){
-      setStarWarsCount(starWarsCount + 1);
-    }else{
-      setStarTrekCount(starTrekCount + 1);
-    }
+
     //console.log(title);
   }
 
