@@ -47,7 +47,7 @@ const ChoiceContainer = () => {
   }
 
   return(
-    <div>
+    <div className="container">
       <Button
         title="Star Wars"
         count={starWarsCount}
