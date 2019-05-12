@@ -4,7 +4,7 @@ import poster from '../img/starwar_or_startrek.jpg';
 const TitleContainer = () => {
   return (
     <div className="container">
-      <img src={poster} alt="test"/>
+      <img src={poster} alt="Star Wars or Star Track img"/>
       <h1>Choose your side</h1>
     </div>
   )

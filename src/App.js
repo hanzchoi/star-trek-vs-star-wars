@@ -1,6 +1,11 @@
 import React from 'react';
-import ChoiceContainer from './ChoiceContainer/ChoiceContainer';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import StarWarsOpening from './StarWarsOpening/StarWarsOpening';
+
 import TitleContainer from './TitleContainer/TitleContainer';
+import ChoiceContainer from './ChoiceContainer/ChoiceContainer';
+import HomeContainer from './HomeContainer/HomeContainer';
+import Logo from './Logo/Logo';
 import './App.css';
 
 const App = () => {
@@ -28,10 +33,17 @@ const App = () => {
 
   return (
     <div className="App">
-      <TitleContainer />
+      <Router>
+        <React.Fragment>
+          <Route exact path="/" render={(props) => <HomeContainer {...props}/>} />
+          <Route exact path="/logo" render={(props) => <Logo {...props}/>} />
+          <Route exact path="/home" render={ChoiceContainer} />
+        </React.Fragment>
+      </Router>
     </div>
   );
 }
 
 export default App;
+// <Route exact path="/" render={(props) => <StarWarsOpening {...props}/>} />
 // <ChoiceContainer />
