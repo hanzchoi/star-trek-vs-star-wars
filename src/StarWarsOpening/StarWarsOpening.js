@@ -4,7 +4,7 @@ import './StarWarsOpening.css';
 const StarWarsOpening = ({history}) => {
 
   const switchToLogo = () => {
-    history.push('logo')
+    history.push('home')
   }
 
   setTimeout(switchToLogo, 7000);

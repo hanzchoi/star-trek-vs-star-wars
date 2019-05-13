@@ -35,9 +35,9 @@ const App = () => {
     <div className="App">
       <Router>
         <React.Fragment>
-          <Route exact path="/" render={(props) => <HomeContainer {...props}/>} />
+          <Route exact path="/" render={(props) => <StarWarsOpening {...props}/>} />
           <Route exact path="/logo" render={(props) => <Logo {...props}/>} />
-          <Route exact path="/home" render={ChoiceContainer} />
+          <Route exact path="/home" render={HomeContainer} />
         </React.Fragment>
       </Router>
     </div>
