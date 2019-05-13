@@ -45,5 +45,3 @@ const App = () => {
 }
 
 export default App;
-// <Route exact path="/" render={(props) => <StarWarsOpening {...props}/>} />
-// <ChoiceContainer />

@@ -1,3 +1,9 @@
 h1{
   color: #ffd700;
+  font-family: inherit;
+  font-size: 3em;
+}
+
+.title-container{
+  height: 50%;
 }
